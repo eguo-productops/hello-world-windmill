@@ -4,16 +4,15 @@ module.exports =
         var config = imports['config'];
 
         config.defaults({
-            service: {
+            "example-service": {
                 var1: "foo"
             }
         });
-        config.set("service:var1","foo");
 
-        var modelAd = {
+        var modelHello = {
 
-            "Ad": {
-                "id": "ad",
+            "Hello": {
+                "id": "Hello",
                 "properties" :{
                     "Type":{
                         "type": "string"
@@ -28,21 +27,21 @@ module.exports =
             }
         };
 
-        windmill.addModels(modelAd);
+        windmill.addModels(modelHello);
 
         /**
          * Define the swagger spec and the action function
          * @type {{spec: {description: string, path: string, method: string,
                 * nickname: string, notes: string, responseClass: string, params: Array, summary: string}, action: Function}}
          */
-        var getAd = {
+        var getHello = {
             'spec': {
-                "description" : "Get Advertising",
-                "path" : "/ads",
+                "description" : "Get World",
+                "path" : "/hello",
                 "method" : "GET",
-                "nickname" : "getAd",
-                "notes": "You can choose between image or text ads",
-                "responseClass" : "Ad",
+                "nickname" : "getHello",
+                "notes": "If you say 'hello' we'll say world. hello. world. HELLO! WORLD!",
+                "responseClass" : "Hello",
                 "params" :
                     [
                         //swagger.headerParam("Accept","Specifies the format of the body for the response.", true),
@@ -60,19 +59,22 @@ module.exports =
 //                                ]
 //                            }
 //                        ),
-//                        windmill.swagger.queryParam("ZipCode","Specifies the zip code of the user.", "integer", false, false),
+                        windmill.swagger.queryParam("allCaps","Specifies if you'd like the greeting in all caps or not.", "boolean", false, false),
 //                        windmill.swagger.queryParam("Longitude","Specifies the current longitude", "decimal", false, false),
 //                        windmill.swagger.queryParam("MinWidth","Specifies the minimum width of the banner", "integer", false, false)
                     ],
-                "summary" : "Get an ad based on the criteria entered"
+                "summary" : "Get a greeting based on the parameters entered"
             },
             'action': function (req,res) {
                 res.statusCode = 200;
-                res.send({"test":2});
+                if(req.query.allCaps === "true")
+                    res.send("WORLD");
+                else
+                    res.send("world");
             }
         };
 
-        windmill.addGet(getAd);
+        windmill.addGet(getHello);
 
         // Callback to the Architect system notifying that module startup is done.
         register(null, {})

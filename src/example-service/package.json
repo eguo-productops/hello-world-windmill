@@ -1,5 +1,5 @@
 {
-    "name": "service",
+    "name": "example-service",
     "version": "0.0.1",
     "main": "service.js",
     "private": true,
