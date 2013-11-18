@@ -1,0 +1,14 @@
+{
+    "name": "hello-world-windmill",
+    "version": "0.0.1",
+    "main": "main.js",
+    "dependencies":{
+        "architect":  "0.1.x",
+        "windmill":    "git://github.com/productOps/windmill.git#master",
+        "config":    "git://github.com/productOps/config.git#master",
+        "healthcheck": "git://github.com/productOps/healthcheck.git#master",
+        "circuitbreaker": "git://github.com/productOps/circuitbreaker.git#master",
+        "cb-mysql": "git://github.com/productOps/cb-mysql.git#master",
+        "mocha-runner": "git://github.com/productOps/mocha-runner.git#master"
+    }
+}

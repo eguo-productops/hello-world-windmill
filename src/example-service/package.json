@@ -1,0 +1,13 @@
+{
+    "name": "service",
+    "version": "0.0.1",
+    "main": "service.js",
+    "private": true,
+
+    "plugin": {
+        "consumes": [
+            "windmill",
+            "config"
+        ]
+    }
+}
